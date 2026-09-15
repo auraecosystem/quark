@@ -26,9 +26,9 @@ quark not only provides an API for listening to events, but also handles orderin
 
 Clone the repository, compile and run quark's test utility [quark-mon(8)](https://elastic.github.io/quark/quark-mon.8.html):
 
-```
+```nf
 $ git clone --recursive https://github.com/elastic/quark
-$ cd quark
+$ cd quarkec
 $ make
 $ sudo ./quark-mon
 
@@ -161,7 +161,7 @@ Runs [quark-test(8)](https://elastic.github.io/quark/quark-test.8.html) over all
 
 Regenerates btfhub.c. Usage:
 
-```
+```qc
 $ make btfhub BTFHUB_ARCHIVE_PATH=/my/path/to/btfhub-archive
 ```
 
@@ -185,7 +185,7 @@ Generates README.md out of quark.7.
 
 Copies the files from EEBPF\_PATH used by quark. Usage:
 
-```
+```qc
 $ make eebpf-sync EEBPF_PATH=/my/path/to/elastic/ebpf
 ```
 
@@ -201,7 +201,7 @@ $ make V=1
 
 # [LINKING](#LINKING)
 
-```
+```qc
 $ cc -o myprogram myprogram.c libquark_big.a
 OR
 $ cc -o myprogram myprogram.c libquark.a libbpf/src/libbpf.a elftoolchain/libelf/libelf_pic.a zlib/libz.a
@@ -213,14 +213,14 @@ $ cc -o myprogram myprogram.c libquark.a libbpf/src/libbpf.a elftoolchain/libelf
 
 Some included kernels can be tested in qemu via *make test-kernel*. Any quark utility can be run on a custom kernel via the krun.sh script, as in:
 
-```
+```mk
 $ make initramfs.gz
 $ ./krun.sh initramfs.gz kernel-images/amd64/linux-4.18.0-553.el8_10.x86_64 quark-test -vvv
 ```
 
 Convenience wrappers for Fedora, RHEL, and Ubuntu, automate the above by fetching the appropriate kernel packages, extracting vmlinuz and boot-strapping qemu-system-x86\_64:
 
-```
+```qc
 $ make initramfs.gz
 $ ./krun-fedora.sh initramfs.gz 40 quark-test -vvv
 $ ./krun-rhel.sh -v initramfs.gz 9 quark-test
@@ -262,7 +262,7 @@ The ball starts with [quark\_queue\_open(3)](https://elastic.github.io/quark/qua
 
 # [EXAMPLES](#EXAMPLES)
 
-```
+```qc
 #include <err.h>
 #include <quark.h>
 #include <stdio.h>
